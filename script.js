@@ -3,6 +3,7 @@ let operatorValue;
 let operatorCounter = 0;
 
 
+
 const displayArea = document.querySelector("#visor");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
@@ -22,7 +23,7 @@ function divide(a,b){
     return Math.round(a / b * 100) / 100;
 }
 
-function operator(operator, a, b){
+/*function operator(operator, a, b){
     if (operator == "+"){
        return add(a, b);
     } else if (operator == "-"){
@@ -33,7 +34,7 @@ function operator(operator, a, b){
         return divide(a, b);
     } 
     console.log("Unsupported parameter");
-}
+}*/
 
 numberButtons.forEach((x) => x.addEventListener('click', () =>{
     displayArea.textContent += x.value;
@@ -55,6 +56,7 @@ numberButtons.forEach((x) => x.addEventListener('click', () =>{
             displayArea.textContent += " " + "/" + " ";
             operatorValue = "/";
         }   
+    
     operatorCounter++;
     return x.value;
     }
@@ -82,10 +84,9 @@ numberButtons.forEach((x) => x.addEventListener('click', () =>{
         } else {
             displayArea.textContent = "ERROR";
         }
-        
+      
         if (operatorCounter == 1){
             operatorCounter--; 
         }
  });
-
 
