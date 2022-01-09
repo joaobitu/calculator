@@ -1,5 +1,6 @@
 let numberValue;
 let operatorValue;
+let operatorCounter = 0;
 
 
 const displayArea = document.querySelector("#visor");
@@ -40,21 +41,23 @@ numberButtons.forEach((x) => x.addEventListener('click', () =>{
  }))
 
  operatorButtons.forEach((x) => x.addEventListener('click', () =>{
+  if(operatorCounter == 0){  
     if (x.value == 10){
-        displayArea.textContent += " " + "+" + " ";
-        operatorValue = "+";
-    } else if (x.value == 11){
-        displayArea.textContent += " " + "-" + " ";
-        operatorValue = "-";
-    } else if (x.value == 12){
-        displayArea.textContent += " " + "*" + " ";
-        operatorValue = "*";
-    } else if (x.value == 13){
-        displayArea.textContent += " " + "/" + " ";
-        operatorValue = "/";
-    }   
-    
+            displayArea.textContent += " " + "+" + " ";
+            operatorValue = "+";
+        } else if (x.value == 11){
+            displayArea.textContent += " " + "-" + " ";
+            operatorValue = "-";
+        } else if (x.value == 12){
+            displayArea.textContent += " " + "*" + " ";
+            operatorValue = "*";
+        } else if (x.value == 13){
+            displayArea.textContent += " " + "/" + " ";
+            operatorValue = "/";
+        }   
+    operatorCounter++;
     return x.value;
+    }
  }))
 
  clearButton.addEventListener('click', () => {
@@ -64,8 +67,7 @@ numberButtons.forEach((x) => x.addEventListener('click', () =>{
  equalButton.addEventListener('click', () =>{
         let FirstNumber = Number(displayArea.textContent.slice(0,displayArea.textContent.indexOf(" ")));
         let SecondNumber = Number(displayArea.textContent.slice(displayArea.textContent.indexOf(" ") + 2));
-        console.log(FirstNumber);
-        console.log(SecondNumber);
+      
         if (operatorValue == "+"){
             displayArea.textContent = add(FirstNumber, SecondNumber);
         } else if (operatorValue == "-"){
@@ -74,11 +76,15 @@ numberButtons.forEach((x) => x.addEventListener('click', () =>{
             displayArea.textContent = multiply(FirstNumber, SecondNumber);
         } else if (operatorValue == "/"){
             if(SecondNumber == 0){
-                return displayArea.textContent = "ERROR";
+                displayArea.textContent = "ERROR";
             }
             displayArea.textContent = divide(FirstNumber, SecondNumber);
         } else {
             displayArea.textContent = "ERROR";
+        }
+        
+        if (operatorCounter == 1){
+            operatorCounter--; 
         }
  });
 
