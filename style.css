@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 100%;
+}
+
+#calculator-body{
+    padding: 10px;
+    background-color: rgb(167, 165, 164);
+    box-shadow: 5px 5px 5px rgb(44, 44, 44);
+}
+button {
+    height: 50px;
+    width: 40px;
+}
+#visor {
+    height: 20px;
+    width: 100%;
+    background-color: white;
+    align-self: center;
+    text-align: right;
+    
+    margin-bottom: 5px;
+}
+#calculator-body {
+    display: flex;
+    flex-direction: column;
+}
